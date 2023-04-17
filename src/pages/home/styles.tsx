@@ -25,7 +25,13 @@ export const CardsContainer = styled.div`
   margin: 30px;
 `;
 
-export const SiteContainer = styled.div``;
+export const SiteContainer = styled.div`
+  color: #563535;
+  padding: 5px;
+  display: block; 
+  margin: 5px auto; 
+  text-align: center;
+`;
 
 export const SpinnerWrapper = styled.div`
   height: inherit;

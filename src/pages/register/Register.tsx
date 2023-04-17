@@ -34,6 +34,9 @@ export const Register = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
+      <div className='paragraph'>
+          <h4>Register</h4>
+        </div>
         {/* register your input into the hook by invoking the "register" function */}
         <input defaultValue="test" {...register('name')} />
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import { loginRequest } from '../../components/ApiCAlls';
+import index from "/index.css";
 type Inputs = {
   email: string;
   password: string;
@@ -33,7 +34,14 @@ export const Login = () => {
 
   return (
     <>
+      
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='paragraph'>
+          <a >
+            <img className="foto" src="https://media.istockphoto.com/id/822432012/pl/wektor/ikona-kszta%C5%82tu-g%C5%82owy-kota.jpg?s=1024x1024&w=is&k=20&c=V45IYwSXUxh9tom947QHGMXpM9VvFtg3w-xdXGFXVnE=" alt="Example Image" />
+          </a>
+          <h4>Log in</h4>
+        </div>
         {/* register your input into the hook by invoking the "register" function */}
         <input defaultValue="twój stary" {...register('email')} />
 
