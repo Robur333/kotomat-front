@@ -2,13 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
-import { loginRequest } from '../../components/ApiCAlls';
+import { loginRequest } from '../../shared/ApiCAlls';
+import { Navbar } from '../../components/Navbar/Navbar';
 type Inputs = {
   email: string;
   password: string;
 };
 
-export const Login = () => {
+export const Login = (): JSX.Element => {
   const navigate = useNavigate();
   const redirectFunc = () => {
     navigate('/HomePage', { replace: true });
@@ -33,18 +34,26 @@ export const Login = () => {
 
   return (
     <>
+      <Navbar />
+
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
-        <input defaultValue="twój stary" {...register('email')} />
+        <input placeholder="Login" {...register('email')} />
 
         {/* include validation with required or other standard HTML validation rules */}
-        <input {...register('password', { required: true })} />
+        <input
+          placeholder="Password"
+          {...register('password', { required: true })}
+        />
         {/* errors will return when field validation fails  */}
         {errors.password && <span>This field is required</span>}
 
-        <input type="submit" />
+        <input value="Sign In" type="submit" />
       </form>
-      <Link to={'/Register'}>Register</Link>
+
+      <p>
+        Don't have an account yet <Link to={'/Register'}>Sign Up</Link>
+      </p>
     </>
   );
 };

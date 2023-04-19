@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { Navbar } from '../../components/Navbar/Navbar';
 type Inputs = {
   name: string;
   surname: string;
@@ -33,21 +34,30 @@ export const Register = () => {
 
   return (
     <>
+      <Navbar />
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
-        <input defaultValue="test" {...register('name')} />
+        <input placeholder="Name" {...register('name')} />
 
         {/* include validation with required or other standard HTML validation rules */}
-        <input {...register('surname', { required: true })} />
-        <input {...register('email', { required: true })} />
-        <input {...register('password', { required: true })} />
+        <input
+          placeholder="Surname"
+          {...register('surname', { required: true })}
+        />
+        <input placeholder="Email" {...register('email', { required: true })} />
+        <input
+          placeholder="Password"
+          {...register('password', { required: true })}
+        />
 
         {/* errors will return when field validation fails  */}
         {errors.password && <span>This field is required</span>}
 
-        <input type="submit" />
+        <input value="Sign Up" type="submit" />
       </form>
-      <Link to={'/Login'}>Login</Link>
+      <p>
+        Have an account ?<Link to={'/Login'}> Sign In</Link>
+      </p>
     </>
   );
 };
