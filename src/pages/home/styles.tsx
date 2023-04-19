@@ -16,12 +16,14 @@ export const CardWrapper = styled.div`
     height: 250px;
     margin: 15px;
     border-radius: 10px;
+    cursor: pointer;
   }
 `;
 
 export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
   margin: 30px;
 `;
 
