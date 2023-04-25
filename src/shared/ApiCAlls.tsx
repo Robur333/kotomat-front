@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { Params } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from './userContext';
 
 export const loginRequest = async (
   email: string,
@@ -51,30 +53,38 @@ export const getSpecificCatData = async (
   return returnValue;
 };
 
-export const addCatToFavorite = async (catId: string): Promise<any> => {
+export const addCatToFavorite = async (
+  catId: string,
+  userId: string
+): Promise<any> => {
   let returnValue;
   await axios
-    .post(`http://localhost:8080/api/addFavorite?catId=${catId}&userId=353`)
+    .post(
+      `http://localhost:8080/api/addFavorite?catId=${catId}&userId=${userId}`
+    )
     .then((response) => (returnValue = response.data));
 
   return returnValue;
 };
 
 export const deleteCatFromFavorite = async (
-  catId: Readonly<Params<string>> | string
+  catId: Readonly<Params<string>> | string,
+  userId: string
 ): Promise<any> => {
   let returnValue;
   await axios
-    .post(`http://localhost:8080/api/removeFavorite?catId=${catId}&userId=353`)
+    .post(
+      `http://localhost:8080/api/removeFavorite?catId=${catId}&userId=${userId}`
+    )
     .then((response) => (returnValue = response));
 
   return returnValue;
 };
 
-export const getUserFavoriteCats = async (): Promise<any> => {
+export const getUserFavoriteCats = async (userId: string): Promise<any> => {
   let returnValue;
   await axios
-    .get(`http://localhost:8080/api/favoriteCats?userId=353`)
+    .get(`http://localhost:8080/api/favoriteCats?userId=${userId}`)
     .then((response) => (returnValue = response.data));
 
   return returnValue;

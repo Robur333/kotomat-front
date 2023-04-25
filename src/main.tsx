@@ -10,6 +10,7 @@ import { CatDetails } from './pages/CatDetails/CatDetails';
 import { MyProfile } from './pages/MyProfile/MyProfile';
 import { RandomCat } from './pages/RandomCat/RandomCat';
 import { MyCats } from './pages/MyCats/MyCats';
+import { UserProvider } from './shared/userContext';
 
 const router = createBrowserRouter([
   {
@@ -43,5 +44,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <RouterProvider router={router} />
+  <UserProvider>
+    <RouterProvider router={router} />
+  </UserProvider>
 );
