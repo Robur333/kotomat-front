@@ -8,8 +8,8 @@ import { CatProperties } from '../../shared/types';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { CardWrapper, CardsContainer } from '../Home/styles';
 import { useNavigate } from 'react-router-dom';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { UserContext } from '../../shared/userContext';
+
 
 interface favoriteButtonProps {
   catId: string;
@@ -61,7 +61,7 @@ export const MyCats = (): JSX.Element => {
       reloadCats(catId);
     };
     console.log(favorite);
-    return <button onClick={toggle}>{<Favorite />}</button>;
+    return <button onClick={toggle}>{'loadujde'}</button>;
   };
 
   const iteratedCats: JSX.Element[] = favoriteCatsData.map((cat) => {
