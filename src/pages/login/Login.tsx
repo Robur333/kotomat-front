@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import { loginRequest } from '../../shared/ApiCAlls';
 import { Navbar } from '../../components/Navbar/Navbar';
+import { UserContext } from '../../shared/userContext';
 type Inputs = {
   email: string;
   password: string;
@@ -14,9 +15,13 @@ export const Login = (): JSX.Element => {
   const redirectFunc = () => {
     navigate('/HomePage', { replace: true });
   };
-  const [isLoggedin, setisLoggedIn] = useState(false);
+  const [isLoggedin, setisLoggedIn] = useState<string | null>(null);
+
+  const { userId, setUserId } = useContext(UserContext);
 
   useEffect(() => {
+    setUserId(isLoggedin);
+    console.log(isLoggedin);
     if (isLoggedin) {
       redirectFunc();
     }
@@ -30,8 +35,10 @@ export const Login = (): JSX.Element => {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setisLoggedIn(await loginRequest(data.email, data.password));
+    setUserId(isLoggedin);
   };
-
+  console.log(userId);
+  console.log(userId);
   return (
     <>
       <Navbar />

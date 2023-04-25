@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {
   deleteCatFromFavorite,
   getSpecificCatData,
@@ -9,6 +9,7 @@ import { Navbar } from '../../components/Navbar/Navbar';
 import { CardWrapper, CardsContainer } from '../Home/styles';
 import { useNavigate } from 'react-router-dom';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
+import { UserContext } from '../../shared/userContext';
 
 interface favoriteButtonProps {
   catId: string;
@@ -22,6 +23,9 @@ export const MyCats = (): JSX.Element => {
   const redirectFunc = (catsId: string) => {
     navigate(`/HomePage/${catsId}`, { replace: true });
   };
+
+  const { userId, setUserId } = useContext(UserContext);
+  console.log(userId);
   useEffect(() => {
     apiCalls();
   }, []);
@@ -46,13 +50,13 @@ export const MyCats = (): JSX.Element => {
   };
   console.log(favoriteCatsData);
   const apiCalls = async () => {
-    await setFavoriteCatsIds(await getUserFavoriteCats());
+    await setFavoriteCatsIds(await getUserFavoriteCats('402'));
   };
 
   const FavoriteButton = ({ catId }: favoriteButtonProps): JSX.Element => {
     const [favorite, setFavorite] = useState(true);
     const toggle = () => {
-      deleteCatFromFavorite(catId);
+      deleteCatFromFavorite(catId, userId);
       setFavorite(!favorite);
       reloadCats(catId);
     };
@@ -73,7 +77,11 @@ export const MyCats = (): JSX.Element => {
   return (
     <>
       <Navbar />
-      <CardsContainer>{iteratedCats}</CardsContainer>
+      {userId === null ? (
+        <div>Najpierw się zaloguje mordeczko </div>
+      ) : (
+        <CardsContainer>{iteratedCats}</CardsContainer>
+      )}
     </>
   );
 };

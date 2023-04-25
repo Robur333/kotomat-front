@@ -27,16 +27,13 @@ export const HomePage = (): JSX.Element => {
   const getData = async () => {
     setCatsData(await getCatsData(1, 20));
   };
-  console.log(catsData);
   const iteratedCatsCards = catsData.map((card: CatProperties) => {
     return (
-      <>
-        <CardWrapper id={card.id}>
-          <FavoriteButton liked={false} catId={card.id} />
-          <h3>{card.breeds[0].name}</h3>
-          <img onClick={() => redirectFunc(card.id)} src={card.url} alt="" />
-        </CardWrapper>
-      </>
+      <CardWrapper id={card.id}>
+        <FavoriteButton catId={card.id} />
+        <h3>{card.breeds[0].name}</h3>
+        <img onClick={() => redirectFunc(card.id)} src={card.url} alt="" />
+      </CardWrapper>
     );
   });
 

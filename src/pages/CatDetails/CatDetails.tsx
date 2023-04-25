@@ -9,11 +9,7 @@ import { CatProperties } from '../../shared/types';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { FavoriteButton } from '../../components/FavoriteButton';
 
-interface CatDetailsProps {
-  isRandomCat: boolean;
-}
-
-export const CatDetails = ({ isRandomCat }: CatDetailsProps): JSX.Element => {
+export const CatDetails = (isRandomCat: boolean): JSX.Element => {
   const [catData, setCatData] = useState<CatProperties>();
   const param = useParams();
 
@@ -31,7 +27,6 @@ export const CatDetails = ({ isRandomCat }: CatDetailsProps): JSX.Element => {
       : setCatData(await getSpecificCatData(param));
   };
   console.log(catData);
-
   return (
     <>
       <Navbar />
@@ -41,7 +36,7 @@ export const CatDetails = ({ isRandomCat }: CatDetailsProps): JSX.Element => {
         </SpinnerWrapper>
       ) : (
         <>
-          <FavoriteButton liked catId={catData.id} />
+          <FavoriteButton catId={catData.id} />
 
           <CardWrapper>
             <img src={catData.url} alt="" />
