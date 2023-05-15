@@ -13,10 +13,12 @@ export const CardWrapper = styled.div`
   border-radius: 15px;
   img {
     width: 250px;
-    height: 250px;
-    margin: 15px;
+    height: 200px;
     border-radius: 10px;
     cursor: pointer;
+  }
+  .css-* {
+    height: 200px;
   }
 `;
 
@@ -24,7 +26,6 @@ export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  margin: 20px;
 `;
 
 export const SpinnerWrapper = styled.div`

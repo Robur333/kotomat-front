@@ -11,6 +11,7 @@ import {
 } from './styles';
 import { CatProperties } from '../../shared/types';
 import { Background } from '../MyProfile/styles';
+import { Random } from '../RandomCat/styles'; 
 
 export const HomePage = (): JSX.Element => {
   const navigate = useNavigate();
