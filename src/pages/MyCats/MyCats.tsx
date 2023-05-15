@@ -9,6 +9,8 @@ import { Navbar } from '../../components/Navbar/Navbar';
 import { CardWrapper, CardsContainer } from '../Home/styles';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../shared/userContext';
+import { Liked } from './styles';
+import { Background } from '../MyProfile/styles';
 
 
 interface favoriteButtonProps {
@@ -66,22 +68,32 @@ export const MyCats = (): JSX.Element => {
 
   const iteratedCats: JSX.Element[] = favoriteCatsData.map((cat) => {
     return (
-      <CardWrapper>
-        <FavoriteButton catId={cat.id} />
+      <Background>
+        <Liked>
+        <CardWrapper>
+          <FavoriteButton catId={cat.id} />
 
-        <img src={cat.url} onClick={() => redirectFunc(cat.id)} alt="" />
-        <p>{cat.breeds[0].name}</p>
-      </CardWrapper>
+          <img src={cat.url} onClick={() => redirectFunc(cat.id)} alt="" />
+          <p>{cat.breeds[0].name}</p>
+        </CardWrapper>
+      </Liked>
+      </Background>
+      
     );
   });
   return (
     <>
+    <Background>
+      <Liked>
       <Navbar />
       {userId === null ? (
         <div>Najpierw się zaloguje mordeczko </div>
       ) : (
         <CardsContainer>{iteratedCats}</CardsContainer>
       )}
+    </Liked>
+    </Background>
+    
     </>
   );
 };

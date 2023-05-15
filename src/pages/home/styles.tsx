@@ -24,10 +24,8 @@ export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  margin: 30px;
+  margin: 20px;
 `;
-
-export const SiteContainer = styled.div``;
 
 export const SpinnerWrapper = styled.div`
   height: inherit;

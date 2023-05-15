@@ -5,6 +5,10 @@ import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import { loginRequest } from '../../shared/ApiCAlls';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { UserContext } from '../../shared/userContext';
+import {
+  LoginPage,
+} from './styles';
+import { Background } from '../MyProfile/styles';
 type Inputs = {
   email: string;
   password: string;
@@ -41,8 +45,9 @@ export const Login = (): JSX.Element => {
   console.log(userId);
   return (
     <>
+    <Background>
+    <LoginPage>
       <Navbar />
-
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         <input placeholder="Login" {...register('email')} />
@@ -61,6 +66,8 @@ export const Login = (): JSX.Element => {
       <p>
         Don't have an account yet <Link to={'/Register'}>Sign Up</Link>
       </p>
+    </LoginPage>
+    </Background>
     </>
   );
 };

@@ -1,12 +1,16 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../shared/userContext';
+import {
+  SiteNavbar,
+} from './styles';
 
 export const Navbar = () => {
   const { userId, setUserId } = useContext(UserContext);
 
   return (
     <>
+    <SiteNavbar>
       {userId === null ? (
         <div>
           <Link to="/HomePage">Home Page</Link>
@@ -27,6 +31,7 @@ export const Navbar = () => {
           <button onClick={() => setUserId(null)}>Log Out</button>
         </div>
       )}
+      </SiteNavbar>
     </>
   );
 };

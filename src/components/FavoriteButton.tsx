@@ -4,11 +4,7 @@ import {
   deleteCatFromFavorite,
   getUserFavoriteCats,
 } from '../shared/ApiCAlls';
-<<<<<<< Updated upstream
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { UserContext } from '../shared/userContext';
-=======
->>>>>>> Stashed changes
 
 export const FavoriteButton = (catId: any): JSX.Element => {
   const { userId, setUserId } = useContext(UserContext);

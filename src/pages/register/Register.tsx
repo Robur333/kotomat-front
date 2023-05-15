@@ -2,6 +2,10 @@ import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar/Navbar';
+import {
+  RegisterPage,
+} from './styles';
+import { Background } from '../MyProfile/styles';
 type Inputs = {
   name: string;
   surname: string;
@@ -34,6 +38,8 @@ export const Register = () => {
 
   return (
     <>
+    <Background>
+    <RegisterPage>
       <Navbar />
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
@@ -58,6 +64,8 @@ export const Register = () => {
       <p>
         Have an account ?<Link to={'/Login'}> Sign In</Link>
       </p>
+      </RegisterPage>
+    </Background>
     </>
   );
 };
