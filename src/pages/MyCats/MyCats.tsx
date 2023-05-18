@@ -7,11 +7,10 @@ import {
 import { CatProperties } from '../../shared/types';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { CardWrapper, CardsContainer } from '../Home/styles';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../shared/userContext';
 import { Liked } from './styles';
-import { Background } from '../MyProfile/styles';
-
+import * as Icons from 'react-feather';
 
 interface favoriteButtonProps {
   catId: string;
@@ -63,37 +62,30 @@ export const MyCats = (): JSX.Element => {
       reloadCats(catId);
     };
     console.log(favorite);
-    return <button onClick={toggle}>{'loadujde'}</button>;
+    return <button onClick={toggle}>{<Icons.Heart color="red" />}</button>;
   };
 
   const iteratedCats: JSX.Element[] = favoriteCatsData.map((cat) => {
     return (
-      <Background>
-        <Liked>
-        <CardWrapper>
-          <FavoriteButton catId={cat.id} />
+      <CardWrapper>
+        <FavoriteButton catId={cat.id} />
+        <p>{cat.breeds[0].name}</p>
 
-          <img src={cat.url} onClick={() => redirectFunc(cat.id)} alt="" />
-          <p>{cat.breeds[0].name}</p>
-        </CardWrapper>
-      </Liked>
-      </Background>
-      
+        <img src={cat.url} onClick={() => redirectFunc(cat.id)} alt="" />
+      </CardWrapper>
     );
   });
   return (
     <>
-    <Background>
-      <Liked>
       <Navbar />
       {userId === null ? (
-        <div>Najpierw się zaloguje mordeczko </div>
+        <Liked>
+          You need to <Link to={'/Login'}> Sign In </Link> to see your favorite
+          cats
+        </Liked>
       ) : (
         <CardsContainer>{iteratedCats}</CardsContainer>
       )}
-    </Liked>
-    </Background>
-    
     </>
   );
 };

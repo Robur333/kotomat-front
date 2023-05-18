@@ -8,8 +8,12 @@ import { PuffLoader } from 'react-spinners';
 import { CatProperties } from '../../shared/types';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { Random } from '../RandomCat/styles';
 
-export const CatDetails = (isRandomCat: boolean): JSX.Element => {
+interface catDetailsProps {
+  isRandomCat: boolean;
+}
+export const CatDetails = ({ isRandomCat }: catDetailsProps): JSX.Element => {
   const [catData, setCatData] = useState<CatProperties>();
   const param = useParams();
 
@@ -26,21 +30,27 @@ export const CatDetails = (isRandomCat: boolean): JSX.Element => {
       ? setCatData(randomCat[0])
       : setCatData(await getSpecificCatData(param));
   };
+
+  const drawCatAgain = () => {
+    setCatData(undefined);
+    getData(param.id);
+  };
   console.log(catData);
   return (
-    <>
+    <Random>
       <Navbar />
       {catData === undefined ? (
         <SpinnerWrapper>
-          <PuffLoader />
+          <PuffLoader color="brown" />
         </SpinnerWrapper>
       ) : (
         <>
-          <FavoriteButton catId={catData.id} />
-
           <CardWrapper>
+            <FavoriteButton catId={catData.id} />
+            <p>{catData.breeds[0].name}</p>
             <img src={catData.url} alt="" />
           </CardWrapper>
+          <button onClick={() => drawCatAgain()}>Draw a cat Again !</button>
 
           <p>{catData.breeds[0].description}</p>
 
@@ -61,6 +71,6 @@ export const CatDetails = (isRandomCat: boolean): JSX.Element => {
           </a>
         </>
       )}
-    </>
+    </Random>
   );
 };

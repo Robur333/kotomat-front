@@ -5,6 +5,7 @@ import {
   getUserFavoriteCats,
 } from '../shared/ApiCAlls';
 import { UserContext } from '../shared/userContext';
+import * as Icons from 'react-feather';
 
 export const FavoriteButton = (catId: any): JSX.Element => {
   const { userId, setUserId } = useContext(UserContext);
@@ -37,7 +38,7 @@ export const FavoriteButton = (catId: any): JSX.Element => {
 
   return (
     <button onClick={toggle}>
-      {favorite ? 'lubie kotka' : 'nie lubie kotka'}
+      {favorite ? <Icons.Heart color="red" /> : <Icons.Heart />}
     </button>
   );
 };

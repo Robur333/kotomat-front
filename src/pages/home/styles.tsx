@@ -11,14 +11,19 @@ export const CardWrapper = styled.div`
   background-color: white;
   color: black;
   border-radius: 15px;
+  padding: 10px;
+  transition: 0.3s;
+  box-shadow: 0px 3px 15px -3px #3e3e3e;
+
+  :hover {
+    box-shadow: 0px 3px 28px -3px #3e3e3e;
+  }
+
   img {
     width: 250px;
     height: 200px;
     border-radius: 10px;
     cursor: pointer;
-  }
-  .css-* {
-    height: 200px;
   }
 `;
 
@@ -29,8 +34,7 @@ export const CardsContainer = styled.div`
 `;
 
 export const SpinnerWrapper = styled.div`
-  height: inherit;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 100px;
 `;

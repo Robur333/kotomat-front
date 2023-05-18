@@ -5,10 +5,7 @@ import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import { loginRequest } from '../../shared/ApiCAlls';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { UserContext } from '../../shared/userContext';
-import {
-  LoginPage,
-} from './styles';
-import { Background } from '../MyProfile/styles';
+import { LoginPage } from './styles';
 type Inputs = {
   email: string;
   password: string;
@@ -44,8 +41,6 @@ export const Login = (): JSX.Element => {
   console.log(userId);
   console.log(userId);
   return (
-    <>
-    <Background>
     <LoginPage>
       <Navbar />
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -67,7 +62,5 @@ export const Login = (): JSX.Element => {
         Don't have an account yet <Link to={'/Register'}>Sign Up</Link>
       </p>
     </LoginPage>
-    </Background>
-    </>
   );
 };
