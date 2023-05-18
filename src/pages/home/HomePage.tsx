@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { getCatsData } from '../../shared/ApiCAlls';
 import { PuffLoader } from 'react-spinners';
@@ -8,10 +7,11 @@ import { Navbar } from '../../components/Navbar/Navbar';
 import {
   CardWrapper,
   CardsContainer,
-  SiteContainer,
   SpinnerWrapper,
 } from './styles';
 import { CatProperties } from '../../shared/types';
+import { Background } from '../MyProfile/styles';
+import { Random } from '../RandomCat/styles'; 
 
 export const HomePage = (): JSX.Element => {
   const navigate = useNavigate();
@@ -29,16 +29,19 @@ export const HomePage = (): JSX.Element => {
   };
   const iteratedCatsCards = catsData.map((card: CatProperties) => {
     return (
-      <CardWrapper id={card.id}>
+      <Background>
+        <CardWrapper id={card.id}>
         <FavoriteButton catId={card.id} />
         <h3>{card.breeds[0].name}</h3>
         <img onClick={() => redirectFunc(card.id)} src={card.url} alt="" />
       </CardWrapper>
+      </Background>
+      
     );
   });
 
   return (
-    <SiteContainer>
+    <Background>
       <Navbar />
       {catsData[0] === undefined ? (
         <SpinnerWrapper>
@@ -47,6 +50,6 @@ export const HomePage = (): JSX.Element => {
       ) : (
         <CardsContainer>{iteratedCatsCards}</CardsContainer>
       )}
-    </SiteContainer>
+    </Background>
   );
 };

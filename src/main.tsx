@@ -8,9 +8,9 @@ import { Register } from './pages/Register/Register';
 import { HomePage } from './pages/Home/HomePage';
 import { CatDetails } from './pages/CatDetails/CatDetails';
 import { MyProfile } from './pages/MyProfile/MyProfile';
-import { RandomCat } from './pages/RandomCat/RandomCat';
 import { MyCats } from './pages/MyCats/MyCats';
 import { UserProvider } from './shared/userContext';
+import { RandomCat } from './pages/RandomCat/RandomCat';
 
 const router = createBrowserRouter([
   {

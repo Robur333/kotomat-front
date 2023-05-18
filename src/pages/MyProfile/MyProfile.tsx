@@ -1,10 +1,17 @@
 import { Navbar } from '../../components/Navbar/Navbar';
+import { Profile } from './styles';
+import { Background } from './styles';
 
 export const MyProfile = () => {
   return (
     <>
-      <Navbar />
-      <div>this is my profile page</div>
+    <Background>
+      <Profile>
+        <Navbar />
+        <div>this is my profile page</div>
+      </Profile>
+    </Background>
+    
     </>
   );
 };
