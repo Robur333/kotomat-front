@@ -10,7 +10,7 @@ type Inputs = {
   password: string;
 };
 
-export const Register = () => {
+export const Register = (): JSX.Element => {
   const registerRequest = (
     name: string,
     email: string,
@@ -37,10 +37,7 @@ export const Register = () => {
     <RegisterPage>
       <Navbar />
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
         <input placeholder="Name" {...register('name')} />
-
-        {/* include validation with required or other standard HTML validation rules */}
         <input
           placeholder="Surname"
           {...register('surname', { required: true })}
@@ -50,8 +47,6 @@ export const Register = () => {
           placeholder="Password"
           {...register('password', { required: true })}
         />
-
-        {/* errors will return when field validation fails  */}
         {errors.password && <span>This field is required</span>}
 
         <input value="Sign Up" type="submit" />

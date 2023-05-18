@@ -1,0 +1,7 @@
+{
+  "name": "kotomat-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

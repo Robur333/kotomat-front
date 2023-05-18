@@ -31,11 +31,10 @@ export const CatDetails = ({ isRandomCat }: catDetailsProps): JSX.Element => {
       : setCatData(await getSpecificCatData(param));
   };
 
-  const drawCatAgain = () => {
+  const drawCatAgain: () => void = () => {
     setCatData(undefined);
     getData(param.id);
   };
-  console.log(catData);
   return (
     <Random>
       <Navbar />
@@ -50,7 +49,9 @@ export const CatDetails = ({ isRandomCat }: catDetailsProps): JSX.Element => {
             <p>{catData.breeds[0].name}</p>
             <img src={catData.url} alt="" />
           </CardWrapper>
-          <button onClick={() => drawCatAgain()}>Draw a cat Again !</button>
+          {isRandomCat && (
+            <button onClick={() => drawCatAgain()}>Draw a cat Again !</button>
+          )}
 
           <p>{catData.breeds[0].description}</p>
 

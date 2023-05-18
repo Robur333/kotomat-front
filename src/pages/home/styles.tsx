@@ -31,10 +31,27 @@ export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
+  padding: 100px 25px 0px 25px;
 `;
 
 export const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 60px;
+  margin-bottom: 50px;
+`;
+
+export const SiteContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 50px;
+`;
+
+export const MoreCatsBtn = styled.button`
+  max-width: 200px;
+  align-self: center;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  background-color: brown;
 `;

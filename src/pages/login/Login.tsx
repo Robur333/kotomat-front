@@ -22,7 +22,6 @@ export const Login = (): JSX.Element => {
 
   useEffect(() => {
     setUserId(isLoggedin);
-    console.log(isLoggedin);
     if (isLoggedin) {
       redirectFunc();
     }
@@ -31,28 +30,23 @@ export const Login = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setisLoggedIn(await loginRequest(data.email, data.password));
     setUserId(isLoggedin);
   };
-  console.log(userId);
-  console.log(userId);
+
   return (
     <LoginPage>
       <Navbar />
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
         <input placeholder="Login" {...register('email')} />
 
-        {/* include validation with required or other standard HTML validation rules */}
         <input
           placeholder="Password"
           {...register('password', { required: true })}
         />
-        {/* errors will return when field validation fails  */}
         {errors.password && <span>This field is required</span>}
 
         <input value="Sign In" type="submit" />

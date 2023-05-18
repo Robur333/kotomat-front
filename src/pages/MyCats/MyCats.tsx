@@ -7,7 +7,7 @@ import {
 import { CatProperties } from '../../shared/types';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { CardWrapper, CardsContainer } from '../Home/styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../shared/userContext';
 import { Liked } from './styles';
 import * as Icons from 'react-feather';
@@ -20,13 +20,12 @@ interface favoriteButtonProps {
 export const MyCats = (): JSX.Element => {
   const [favoriteCatsIds, setFavoriteCatsIds] = useState<string[]>([]);
   const [favoriteCatsData, setFavoriteCatsData] = useState<CatProperties[]>([]);
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const redirectFunc = (catsId: string) => {
     navigate(`/HomePage/${catsId}`, { replace: true });
   };
 
   const { userId, setUserId } = useContext(UserContext);
-  console.log(userId);
   useEffect(() => {
     apiCalls();
   }, []);
@@ -36,8 +35,9 @@ export const MyCats = (): JSX.Element => {
   }, [favoriteCatsIds]);
 
   const reloadCats = (catId: string) => {
-    console.log('clicked');
-    const filteredCats = favoriteCatsData.filter((cat) => cat.id !== catId);
+    const filteredCats: CatProperties[] = favoriteCatsData.filter(
+      (cat) => cat.id !== catId
+    );
     setFavoriteCatsData(filteredCats);
   };
 
@@ -49,8 +49,7 @@ export const MyCats = (): JSX.Element => {
       });
     });
   };
-  console.log(favoriteCatsData);
-  const apiCalls = async () => {
+  const apiCalls: () => Promise<void> = async () => {
     await setFavoriteCatsIds(await getUserFavoriteCats('402'));
   };
 

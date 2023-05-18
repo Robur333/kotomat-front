@@ -10,7 +10,7 @@ export const UserContext = createContext<UserContextType>({
   setUserId: () => {},
 });
 
-export const UserProvider: React.FC = ({ children }: any) => {
+export const UserProvider = ({ children }: any) => {
   const [userId, setUserId] = useState<string | null>(null);
 
   return (
