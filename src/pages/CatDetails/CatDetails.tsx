@@ -18,7 +18,6 @@ export const CatDetails = ({ isRandomCat }: catDetailsProps): JSX.Element => {
   const param = useParams();
 
   useEffect(() => {
-    console.log(param);
     //@ts-expect-error
     getData(param.id);
   }, [param]);
@@ -33,6 +32,7 @@ export const CatDetails = ({ isRandomCat }: catDetailsProps): JSX.Element => {
 
   const drawCatAgain: () => void = () => {
     setCatData(undefined);
+    //@ts-expect-error
     getData(param.id);
   };
   return (

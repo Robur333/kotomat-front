@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { RegisterPage } from './styles';
 type Inputs = {
@@ -23,15 +23,17 @@ export const Register = (): JSX.Element => {
       )
       .then((response) => console.log(response.data));
   };
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) =>
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     registerRequest(data.name, data.email, data.surname, data.password);
+    navigate(`/login`, { replace: false });
+  };
 
   return (
     <RegisterPage>
@@ -48,8 +50,7 @@ export const Register = (): JSX.Element => {
           {...register('password', { required: true })}
         />
         {errors.password && <span>This field is required</span>}
-
-        <input value="Sign Up" type="submit" />
+        <button type="submit">Sign in </button>
       </form>
       <p>
         Have an account ?<Link to={'/Login'}> Sign In</Link>

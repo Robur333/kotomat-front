@@ -50,7 +50,7 @@ export const MyCats = (): JSX.Element => {
     });
   };
   const apiCalls: () => Promise<void> = async () => {
-    await setFavoriteCatsIds(await getUserFavoriteCats('402'));
+    await setFavoriteCatsIds(await getUserFavoriteCats(userId));
   };
 
   const FavoriteButton = ({ catId }: favoriteButtonProps): JSX.Element => {
@@ -60,7 +60,6 @@ export const MyCats = (): JSX.Element => {
       setFavorite(!favorite);
       reloadCats(catId);
     };
-    console.log(favorite);
     return <button onClick={toggle}>{<Icons.Heart color="red" />}</button>;
   };
 
