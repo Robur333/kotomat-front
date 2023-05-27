@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { Params } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from './userContext';
 
 export const loginRequest = async (
   email: string,

@@ -24,7 +24,6 @@ export const CatDetails = ({ isRandomCat }: catDetailsProps): JSX.Element => {
 
   const getData = async (param: Readonly<Params<string>>) => {
     const randomCat = await getRandomCat();
-    console.log(isRandomCat);
     isRandomCat
       ? setCatData(randomCat[0])
       : setCatData(await getSpecificCatData(param));
