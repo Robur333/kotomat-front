@@ -19,7 +19,7 @@ export const Register = (): JSX.Element => {
   ) => {
     axios
       .post(
-        `http://localhost:8080/api/add?name=${name}&email=${email}&surname=${surname}&password=${password}`
+        `https://localhost:44326/add?name=${name}&email=${email}&surname=${surname}&password=${password}`
       )
       .then((response) => console.log(response.data));
   };

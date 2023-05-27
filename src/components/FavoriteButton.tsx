@@ -10,7 +10,6 @@ import * as Icons from 'react-feather';
 export const FavoriteButton = (catId: any): JSX.Element => {
   const { userId, setUserId } = useContext(UserContext);
 
-  const [isThisCatFAvorite, setIsThisCatFavorite] = useState<string[]>();
   const [favorite, setFavorite] = useState<boolean>();
   useEffect(() => {
     apiCalls();
@@ -18,11 +17,14 @@ export const FavoriteButton = (catId: any): JSX.Element => {
   const apiCalls = async () => {
     if (userId !== null) {
       const returnValue: string[] = await getUserFavoriteCats(userId);
-      const filtered = returnValue.filter((element) => element === catId);
-      const filtereddd: boolean =
-        filtered.length == 1 && filtered.length != undefined ? true : false;
-      setIsThisCatFavorite(filtered);
-      setFavorite(filtereddd);
+      const filteredCats = returnValue.filter(
+        (element) => element === catId.catId
+      );
+      const isCatFavorite: boolean =
+        filteredCats.length == 1 && filteredCats.length != undefined
+          ? true
+          : false;
+      setFavorite(isCatFavorite);
     }
   };
   const toggle = () => {
